@@ -1,4 +1,6 @@
-# Modern.js App
+# Akashic Home
+
+Akashic home is a micro frontend app for akashic project, providing the home page and the dashboard.
 
 ## Setup
 
