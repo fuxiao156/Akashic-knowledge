@@ -50,7 +50,7 @@ const ResourceSwitch = (props: {
   throw new Error('unknown resource type');
 };
 
-const ResourceTypeLabel = (props: {
+export const ResourceTypeLabel = (props: {
   type: IResource<TFile | TMedia | TArticle>['type'];
 }) => {
   const { type } = props;

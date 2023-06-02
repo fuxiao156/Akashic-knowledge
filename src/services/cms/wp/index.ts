@@ -53,12 +53,19 @@ class WordPressCMS extends Service<WP, TArticle | TFile | TMedia> {
 
   fetch(_id: number): Promise<IResource<TArticle | TFile | TMedia>> {
     throw new Error('Method not implemented.');
+    // this.app.posts().perPage()
   }
 
-  create(
+  async create(
     _resource: IResource<TArticle | TFile | TMedia>,
   ): Promise<IResource<TArticle | TFile | TMedia>> {
-    throw new Error('Method not implemented.');
+    const post = await this.app.posts().create({
+      title: _resource.title,
+      type: _resource.type,
+    });
+
+    return post;
+    // throw new Error('Method not implemented.');
   }
 
   update(
