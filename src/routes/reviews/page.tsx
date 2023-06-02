@@ -50,7 +50,7 @@ export default function Review() {
     <main>
       {/* <ReviewsList resources={mediaList} /> */}
       <div className="h-24"></div>
-      <div className="grid grid-cols-3 gap-4 gap-y-16">
+      <div className="grid grid-cols-3 gap-4 gap-y-16 w-5/6">
         {mediaList.map(resource => (
           <ReviewsListItemCard key={resource.id} resource={resource} />
         ))}

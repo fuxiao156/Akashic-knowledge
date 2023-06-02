@@ -28,7 +28,7 @@ const FileItem = (props: { resource: IResource<TFile> }) => {
           </p>
         </div>
         <div className="w-full mb-4 dark:bg-white">
-          <div className="flex items-center justify-start text-xs text-gray-400 dark:text-black grid gap-4 grid-cols-4">
+          <div className="flex items-center justify-start text-xs text-gray-400 dark:text-black grid gap-4 grid-cols-3">
             <p className="flex flex-col p-2 bg-pink-100 rounded-lg">
               <span className="font-bold text-black dark:text-indigo-500 text-center">
                 计算机学院
@@ -85,7 +85,7 @@ const ArticleItem = (props: { resource: IResource<TArticle> }) => {
           </p>
         </div>
         <div className="w-full mb-4 dark:bg-white">
-          <div className="flex items-center justify-start text-xs text-gray-400 dark:text-black grid gap-4 grid-cols-4">
+          <div className="flex items-center justify-start text-xs text-gray-400 dark:text-black grid gap-4 grid-cols-3">
             <p className="flex flex-col p-2 bg-pink-100 rounded-lg">
               <span className="font-bold text-black dark:text-indigo-500 text-center">
                 计算机学院
