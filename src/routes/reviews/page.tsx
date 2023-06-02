@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { throttle } from 'lodash';
-import { ReviewsList } from '@/component/review/ReviewsList';
+// import { ReviewsList } from '@/component/review/ReviewsList';
 import { FastNewResource } from '@/component/review/FastNewResource';
 import { IResource } from '@/domain/entity/resource.interface';
 import { wordPressCMS } from '@/services/cms/wp';
 import { SearchWithFilter } from '@/component/review/SearchWithFilter';
+import { ReviewsListItemCard } from '@/component/review/ReviewsListItemCard';
 
 type TypeOfResource = Pick<IResource<any>, 'type'>['type'];
 
@@ -47,16 +48,13 @@ export default function Review() {
 
   return (
     <main>
-      <ReviewsList resources={mediaList} />
-      {/* <div className="h-12"></div> */}
-      {/* <ReviewsListItemCard
-        resource={{
-          data: { content: '' },
-          id: 17,
-          title: '1234',
-          type: 'article',
-        }}
-      /> */}
+      {/* <ReviewsList resources={mediaList} /> */}
+      <div className="h-24"></div>
+      <div className="grid grid-cols-3 gap-4 gap-y-16">
+        {mediaList.map(resource => (
+          <ReviewsListItemCard key={resource.id} resource={resource} />
+        ))}
+      </div>
       <div>
         <FastNewResource />
         <SearchWithFilter
