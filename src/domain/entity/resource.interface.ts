@@ -1,6 +1,7 @@
 export interface IResource<DataType extends { type: string }> {
   id: number;
-  title: string;
+  title: any;
+  content?: any;
   type: DataType['type'];
   data: Omit<DataType, 'type'>;
 }

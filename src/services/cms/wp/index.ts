@@ -7,7 +7,7 @@ import { IResource } from '@/domain/entity/resource.interface';
 
 class WordPressCMS extends Service<WP, TArticle | TFile | TMedia> {
   constructor() {
-    const wp = new WP({ endpoint: `api/?rest_route=/` });
+    const wp = new WP({ endpoint: `http://localhost:8081/api/?rest_route=/` });
     super(wp);
   }
 
@@ -18,6 +18,7 @@ class WordPressCMS extends Service<WP, TArticle | TFile | TMedia> {
       (post: any): IResource<TArticle> => ({
         type: 'article',
         id: post.id,
+        content: post.content,
         title: post.title.rendered,
         data: {
           content: post.content.rendered,
@@ -51,21 +52,15 @@ class WordPressCMS extends Service<WP, TArticle | TFile | TMedia> {
     return [...posts, ...media];
   }
 
-  fetch(_id: number): Promise<IResource<TArticle | TFile | TMedia>> {
-    throw new Error('Method not implemented.');
-    // this.app.posts().perPage()
+  async fetch(id: number): Promise<IResource<TArticle | TFile | TMedia>> {
+    const post = await this.app.posts().id(id);
+    return post;
   }
 
-  async create(
+  create(
     _resource: IResource<TArticle | TFile | TMedia>,
   ): Promise<IResource<TArticle | TFile | TMedia>> {
-    const post = await this.app.posts().create({
-      title: _resource.title,
-      type: _resource.type,
-    });
-
-    return post;
-    // throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.');
   }
 
   update(
