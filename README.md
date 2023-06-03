@@ -1,6 +1,6 @@
-# Akashic Home
+# Akashic knowledge
 
-Akashic home is a micro frontend app for akashic project, providing the home page and the dashboard.
+Akashic knowledge is a micro frontend app for akashic project, providing the home page and the dashboard for a knowledgebase.
 
 ## Setup
 
