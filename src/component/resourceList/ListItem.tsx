@@ -72,13 +72,17 @@ export const ResourceTypeLabel = (props: {
 export const ResourceListItem = (props: {
   resource: IResource<TFile | TMedia | TArticle>;
 }) => {
+  const jump = () => {
+    console.log(window.location);
+    window.location.assign("http://"+window.location.host+"/detail/"+resource.id);
+  }
   const { resource } = props;
   return (
     <div className="p-5 rounded-sm">
       <div className="whitespace-nowrap">
-        <h1 className="text-2xl font-bold m-5 inline-block">
+        <div className="text-2xl font-bold m-5" onClick={jump}>
           {resource.title}
-        </h1>
+        </div>
         <ResourceTypeLabel type={resource.type} />
       </div>
       <div className="p-5">
