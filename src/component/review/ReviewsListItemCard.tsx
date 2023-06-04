@@ -16,6 +16,9 @@ const { Title, Paragraph } = Typography;
 
 const FileItem = (props: { resource: IResource<TFile> }) => {
   const { resource } = props;
+  const jump = () => {
+    window.location.assign("http://"+window.location.host+"/reviews/"+resource.id);
+  }
   return (
     <div className="w-full max-w-xl px-5 py-4 mx-auto text-gray-800 bg-white rounded-lg shadow-lg hover:-translate-y-6 duration-300">
       <div className="w-full pt-1 mx-auto -mt-16 text-center">
@@ -49,6 +52,7 @@ const FileItem = (props: { resource: IResource<TFile> }) => {
         <button
           type="button"
           className="py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+          onClick={jump}
         >
           审查
         </button>

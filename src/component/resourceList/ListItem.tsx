@@ -73,7 +73,6 @@ export const ResourceListItem = (props: {
   resource: IResource<TFile | TMedia | TArticle>;
 }) => {
   const jump = () => {
-    console.log(window.location);
     window.location.assign("http://"+window.location.host+"/detail/"+resource.id);
   }
   const { resource } = props;

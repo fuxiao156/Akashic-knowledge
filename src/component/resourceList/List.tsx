@@ -48,7 +48,7 @@ export const ResourceList = (props: { resources: IResource<any>[] }) => {
       <Form form={form}>
         <Row>
           <Col span={8}>
-            <Form.Item field="type" label="類型">
+            <Form.Item field="type" label="类型">
               <TypeSelect />
             </Form.Item >
           </Col>

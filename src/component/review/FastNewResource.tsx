@@ -18,12 +18,13 @@ export const FastNewResource = () => {
   const [form] = Form.useForm();
 
   function onOk() {
+    console.log(form.getFieldsValue());
     form.validate().then(res => {
-      window.console.log(res);
+      console.log(res);
       setConfirmLoading(true);
       // 此处调用wpapi
       Message.success('上传成功 !');
-      form.clearFields();
+      // form.clearFields();
       setConfirmLoading(false);
       setModalVisible(false);
     });
@@ -62,7 +63,7 @@ export const FastNewResource = () => {
           </>
         }
       >
-        <Form layout="vertical" scrollToFirstError>
+        <Form form={form} layout="vertical" scrollToFirstError>
           <FormItem
             label="标题"
             field="title"
@@ -96,7 +97,7 @@ export const FastNewResource = () => {
               // style={{ height: 200 }}
             />
           </FormItem>
-          <FormItem label="备注" field="remark">
+          <FormItem label="备注" field="note">
             <Input.TextArea
               placeholder="请输入 ..."
               maxLength={1000}
