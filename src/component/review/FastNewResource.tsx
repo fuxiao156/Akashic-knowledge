@@ -17,7 +17,7 @@ export const FastNewResource = () => {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [form] = Form.useForm();
 
-  function onOk() {
+  const onOk = () => {
     console.log(form.getFieldsValue());
     form.validate().then(res => {
       console.log(res);

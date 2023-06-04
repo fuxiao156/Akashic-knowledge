@@ -38,8 +38,6 @@ export const ResourceList = (props: { resources: IResource<any>[] }) => {
   const filter = () =>{
     const Search = form.getFieldsValue();
     setSearchValue(Search.name);
-
-
     if(!Search.type&&!Search.year)
       setResources(props.resources);
     else {
