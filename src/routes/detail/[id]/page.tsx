@@ -43,10 +43,6 @@ export default function Management(){
 
   return post?(
     <>
-      <main className="min-h-screen pt-32 flex flex-col items-start">
-        <div className="w-full top-0 p-5 fixed flex items-center gap-5 backdrop-blur-lg shadow-lg">
-          <h1 className="text-4xl font-bold">Akashic</h1>
-        </div>
         <div className="w-full p-5 rounded-sm">
           <div className="w-full whitespace-nowrap inline-block">
             <h1 className="text-2xl font-bold m-5 inline-block">
@@ -62,7 +58,6 @@ export default function Management(){
 
           </div>
         </div>
-      </main>
     </>
   ): <div>文章不存在，请检查id值</div>
 }
