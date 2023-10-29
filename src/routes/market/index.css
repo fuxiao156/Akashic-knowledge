@@ -1,0 +1,177 @@
+.marketPage {
+  padding: 23px;
+  background-color: #f7f8fa;
+}
+
+.tip {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 94px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  font-weight: bold;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.now {
+  color: white;
+  background-color: #a2ef4d;
+}
+.future {
+  color: white;
+  background-color: #bd3124;
+}
+.past {
+  background-color: #efefef;
+}
+
+.pageTitle {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.functionArea {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.kindSelect {
+  display: flex;
+  justify-content: left;
+}
+
+.kind {
+  color: #4e5969;
+  text-align: center;
+  height: 36px;
+  line-height: 36px;
+  width: 126px;
+  font-size: 14px;
+  border-radius: 32px;
+  cursor: pointer;
+}
+
+.kind:hover {
+  color: #101010;
+  background-color: #bbbbbb5b;
+}
+
+.search {
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  background-color: #bbbbbb5b;
+  width: 288px;
+  height: 38px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.searchInput {
+  background-color: transparent;
+  width: 86%;
+}
+
+.subTitle {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  margin-top: 22px;
+}
+
+.product {
+  background-color: aliceblue;
+  padding: 10px;
+  color: black;
+}
+
+.img {
+  width: 100%;
+  width: 150px;
+  object-fit: cover;
+}
+
+.intro {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+* {
+  margin: 0;
+}
+.sellBox {
+  width: 100%;
+  display: grid;
+  row-gap: 24px;
+  column-gap: 24px;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+}
+.sellitem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 210px;
+  transition: all 0.2s ease;
+  position: relative;
+  border: 1px solid rgba(229, 232, 239, 1);
+  border-radius: 4px;
+}
+.itemTitle {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-left: 24px;
+  margin-top: 24px;
+}
+.date {
+  font-size: 14px;
+  color: #86909c;
+  margin-left: 24px;
+}
+
+.itemBottom {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 20px;
+}
+
+.detail {
+  background-color: #1f63ff;
+  color: white;
+  width: 72px;
+  line-height: 38px;
+  height: 38px;
+  text-align: center;
+  border-radius: 4px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.buy {
+  background-color: #bbbbbb5b;
+  cursor: pointer;
+  width: 72px;
+  text-align: center;
+  border-radius: 4px;
+  line-height: 38px;
+  height: 38px;
+  color: #4e5969;
+  margin-right: 20px;
+}
+
+@media (max-width: 1268px) {
+  .sellBox {
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+  }
+}
+@media (min-width: 1920px) {
+  .sellBox {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
