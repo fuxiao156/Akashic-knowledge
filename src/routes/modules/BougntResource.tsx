@@ -1,11 +1,12 @@
 // 资源界面：展示购买的资源
 
-import { Table, TableColumnProps, Input, Button } from '@arco-design/web-react';
+import { Table, TableColumnProps, Input } from '@arco-design/web-react';
+import { RefInputType } from '@arco-design/web-react/es/Input/interface';
 import { IconSearch } from '@arco-design/web-react/icon';
 import { useRef, useState } from 'react';
 
 const BoughtResource = () => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<RefInputType>(null);
   const columns: TableColumnProps[] = [
     {
       title: '购买的资源',
@@ -18,12 +19,16 @@ const BoughtResource = () => {
               ref={inputRef}
               searchButton
               placeholder="Please enter name"
-              value={filterKeys[0] || ''}
+              value={filterKeys ? filterKeys[0] : ''}
               onChange={value => {
-                setFilterKeys(value ? [value] : []);
+                if (setFilterKeys) {
+                  setFilterKeys(value ? [value] : []);
+                }
               }}
               onSearch={() => {
-                confirm();
+                if (confirm) {
+                  confirm();
+                }
               }}
             />
           </div>
@@ -33,7 +38,7 @@ const BoughtResource = () => {
         value ? row.boughtResource.indexOf(value) !== -1 : true,
       onFilterDropdownVisibleChange: visible => {
         if (visible) {
-          setTimeout(() => inputRef.current.focus(), 150);
+          setTimeout(() => inputRef.current?.focus(), 150);
         }
       },
     },
@@ -51,7 +56,7 @@ const BoughtResource = () => {
     },
   ];
 
-  const [data, setData] = useState([
+  const [data] = useState([
     {
       key: 1,
       boughtResource: '购买的资源1',

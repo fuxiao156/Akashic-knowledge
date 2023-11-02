@@ -1,11 +1,12 @@
 // 积分界面：查看惩罚记录
 
 import { Input, Table, TableColumnProps } from '@arco-design/web-react';
+import { RefInputType } from '@arco-design/web-react/es/Input/interface';
 import { IconSearch } from '@arco-design/web-react/icon';
 import { useRef, useState } from 'react';
 
 const ViewPublishRecord = () => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<RefInputType>(null);
 
   const columns: TableColumnProps[] = [
     {
@@ -19,12 +20,16 @@ const ViewPublishRecord = () => {
               ref={inputRef}
               searchButton
               placeholder=""
-              value={filterKeys[0] || ''}
+              value={filterKeys ? filterKeys[0] : ''}
               onChange={value => {
-                setFilterKeys(value ? [value] : []);
+                if (setFilterKeys) {
+                  setFilterKeys(value ? [value] : []);
+                }
               }}
               onSearch={() => {
-                confirm();
+                if (confirm) {
+                  confirm();
+                }
               }}
             />
           </div>
@@ -34,7 +39,7 @@ const ViewPublishRecord = () => {
         value ? row.operation.indexOf(value) !== -1 : true,
       onFilterDropdownVisibleChange: visible => {
         if (visible) {
-          setTimeout(() => inputRef.current.focus(), 150);
+          setTimeout(() => inputRef.current?.focus(), 150);
         }
       },
     },
@@ -51,7 +56,7 @@ const ViewPublishRecord = () => {
       dataIndex: 'time',
     },
   ];
-  const [data, setData] = useState([
+  const [data] = useState([
     {
       key: 1,
       operation: '操作',

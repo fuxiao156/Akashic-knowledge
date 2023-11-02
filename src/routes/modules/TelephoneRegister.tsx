@@ -1,6 +1,13 @@
 // 注册界面：通过手机号与短信验证码注册
 
-import { Button, Checkbox, Form, Input, Message } from '@arco-design/web-react';
+import {
+  Button,
+  Checkbox,
+  Form,
+  FormInstance,
+  Input,
+  Message,
+} from '@arco-design/web-react';
 import {
   IconMessage,
   IconPhone,
@@ -12,24 +19,23 @@ import { useEffect, useRef, useState } from 'react';
 const FormItem = Form.Item;
 
 const TelephoneRegister = () => {
-  const formRef = useRef();
+  const formRef = useRef<FormInstance>(null);
 
   useEffect(() => {
-    // @ts-expect-error
-    formRef.current.setFieldsValue({
+    formRef.current?.setFieldsValue({
       rate: 5,
     });
   }, []);
 
   const [verificationMessage, setVerificationMessage] = useState('获取验证码');
 
-  // @ts-expect-error
-  function getMessageVerificationCode(e) {
+  function getMessageVerificationCode(e: React.MouseEvent) {
     e.stopPropagation();
     const verification = document.getElementById('verification');
     if (verificationMessage === '获取验证码') {
-      // @ts-expect-error
-      verification.style.color = 'grey';
+      if (verification) {
+        verification.style.color = 'grey';
+      }
       let i = 60;
 
       const countDown = function () {
@@ -43,8 +49,9 @@ const TelephoneRegister = () => {
         if (i === 0) {
           clearInterval(timer);
           setVerificationMessage(`获取验证码`);
-          // @ts-expect-error
-          verification.style.color = '#0083ff';
+          if (verification) {
+            verification.style.color = '#0083ff';
+          }
         }
       }, 1000);
     }
@@ -138,7 +145,6 @@ const TelephoneRegister = () => {
                   await formRef.current.validate();
                   Message.info('校验通过，提交成功！');
                 } catch (_) {
-                  console.log(formRef.current.getFieldsError());
                   Message.error('校验失败，请检查字段！');
                 }
               }

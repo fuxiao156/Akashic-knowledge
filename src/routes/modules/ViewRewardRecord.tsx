@@ -3,9 +3,10 @@
 import { Table, TableColumnProps, Input } from '@arco-design/web-react';
 import { useRef, useState } from 'react';
 import { IconSearch } from '@arco-design/web-react/icon';
+import { RefInputType } from '@arco-design/web-react/es/Input/interface';
 
 const ViewRewardRecord = () => {
-  const inputRef = useRef(null);
+  const inputRef = useRef<RefInputType>(null);
 
   const columns: TableColumnProps[] = [
     {
@@ -19,12 +20,16 @@ const ViewRewardRecord = () => {
               ref={inputRef}
               searchButton
               placeholder=""
-              value={filterKeys[0] || ''}
+              value={filterKeys ? filterKeys[0] : ''}
               onChange={value => {
-                setFilterKeys(value ? [value] : []);
+                if (setFilterKeys) {
+                  setFilterKeys(value ? [value] : []);
+                }
               }}
               onSearch={() => {
-                confirm();
+                if (confirm) {
+                  confirm();
+                }
               }}
             />
           </div>
@@ -34,7 +39,11 @@ const ViewRewardRecord = () => {
         value ? row.operation.indexOf(value) !== -1 : true,
       onFilterDropdownVisibleChange: visible => {
         if (visible) {
-          setTimeout(() => inputRef.current.focus(), 150);
+          setTimeout(() => {
+            if (inputRef.current) {
+              inputRef.current.focus();
+            }
+          }, 150);
         }
       },
     },
@@ -51,7 +60,7 @@ const ViewRewardRecord = () => {
       dataIndex: 'time',
     },
   ];
-  const [data, setData] = useState([
+  const [data] = useState([
     {
       key: 1,
       operation: '操作',

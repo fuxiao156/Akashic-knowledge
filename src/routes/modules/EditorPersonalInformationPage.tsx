@@ -2,14 +2,22 @@
 
 import { Button, Descriptions } from '@arco-design/web-react';
 
-const person = {
+interface Person {
+  [key: string]: string;
+  姓名: string;
+  学院: string;
+  专业班级: string;
+  学号: string;
+}
+
+const person: Person = {
   姓名: '夏铎恺',
   学院: '计算机学院',
   专业班级: '软件工程2206',
   学号: '8209220608',
 };
 
-const data = [];
+const data: { label: string; value: string }[] = [];
 
 Object.keys(person).forEach(key => {
   data.push({ label: key, value: person[key] });

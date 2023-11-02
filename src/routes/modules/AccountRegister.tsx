@@ -1,6 +1,13 @@
 // 注册界面：通过账号密码注册
 
-import { Button, Checkbox, Form, Input, Message } from '@arco-design/web-react';
+import {
+  Button,
+  Checkbox,
+  Form,
+  FormInstance,
+  Input,
+  Message,
+} from '@arco-design/web-react';
 import { IconSafe, IconUnlock, IconUser } from '@arco-design/web-react/icon';
 import { useEffect, useRef } from 'react';
 import '../style/RegisterPage.css';
@@ -8,11 +15,10 @@ import '../style/RegisterPage.css';
 const FormItem = Form.Item;
 
 const AccountRegister = () => {
-  const formRef = useRef();
+  const formRef = useRef<FormInstance>(null);
 
   useEffect(() => {
-    // @ts-expect-error
-    formRef.current.setFieldsValue({
+    formRef.current?.setFieldsValue({
       rate: 5,
     });
   }, []);
@@ -92,7 +98,6 @@ const AccountRegister = () => {
                   await formRef.current.validate();
                   Message.info('校验通过，提交成功！');
                 } catch (_) {
-                  console.log(formRef.current.getFieldsError());
                   Message.error('校验失败，请检查字段！');
                 }
               }

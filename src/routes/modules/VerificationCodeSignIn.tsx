@@ -1,31 +1,33 @@
 // 登陆界面：通过手机号与短信验证码登录
 
-import { Button, Form, Input, Message } from '@arco-design/web-react';
+import {
+  Button,
+  Form,
+  FormInstance,
+  Input,
+  Message,
+} from '@arco-design/web-react';
 import { IconSafe, IconUnlock, IconUser } from '@arco-design/web-react/icon';
 import { useEffect, useRef, useState } from 'react';
 
 const FormItem = Form.Item;
-const verificationCodeSignIn = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const formRef = useRef();
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+const VerificationCodeSignIn = () => {
+  const formRef = useRef<FormInstance>(null);
   useEffect(() => {
-    // @ts-expect-error
-    formRef.current.setFieldsValue({
+    formRef.current?.setFieldsValue({
       rate: 5,
     });
   }, []);
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [verificationMessage, setVerificationMessage] = useState('获取验证码');
 
-  // @ts-expect-error
-  function getMessageVerificationCode(e) {
+  function getMessageVerificationCode(e: React.MouseEvent) {
     e.stopPropagation();
     const verification = document.getElementById('verification');
     if (verificationMessage === '获取验证码') {
-      // @ts-expect-error
-      verification.style.color = 'grey';
+      if (verification) {
+        verification.style.color = 'grey';
+      }
       let i = 60;
 
       const countDown = function () {
@@ -39,8 +41,9 @@ const verificationCodeSignIn = () => {
         if (i === 0) {
           clearInterval(timer);
           setVerificationMessage(`获取验证码`);
-          // @ts-expect-error
-          verification.style.color = '#0083ff';
+          if (verification) {
+            verification.style.color = '#0083ff';
+          }
         }
       }, 1000);
     }
@@ -109,7 +112,6 @@ const verificationCodeSignIn = () => {
                   await formRef.current.validate();
                   Message.info('校验通过，提交成功！');
                 } catch (_) {
-                  console.log(formRef.current.getFieldsError());
                   Message.error('校验失败，请检查字段！');
                 }
               }
@@ -135,4 +137,4 @@ const verificationCodeSignIn = () => {
   );
 };
 
-export default verificationCodeSignIn;
+export default VerificationCodeSignIn;

@@ -1,18 +1,23 @@
 // 登陆界面：通过账号密码登录
 
-import { Button, Checkbox, Form, Input, Message } from '@arco-design/web-react';
+import {
+  Button,
+  Checkbox,
+  Form,
+  FormInstance,
+  Input,
+  Message,
+} from '@arco-design/web-react';
 import { IconUnlock, IconUser } from '@arco-design/web-react/icon';
 import { useEffect, useRef } from 'react';
 
 const FormItem = Form.Item;
 
-const accountSignIn = () => {
-  const formRef = useRef();
+const AccountSignIn = () => {
+  const formRef = useRef<FormInstance>(null);
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    // @ts-expect-error
-    formRef.current.setFieldsValue({
+    formRef.current?.setFieldsValue({
       rate: 5,
     });
   }, []);
@@ -61,6 +66,7 @@ const accountSignIn = () => {
                   await formRef.current.validate();
                   Message.info('校验通过，提交成功！');
                 } catch (_) {
+                  // eslint-disable-next-line no-console
                   console.log(formRef.current.getFieldsError());
                   Message.error('校验失败，请检查字段！');
                 }
@@ -94,4 +100,4 @@ const accountSignIn = () => {
   );
 };
 
-export default accountSignIn;
+export default AccountSignIn;
